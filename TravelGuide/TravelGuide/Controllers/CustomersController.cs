@@ -26,7 +26,7 @@ namespace TravelGuide.Controllers
         public ActionResult Details(int id)
         {
             Customer customer = context.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
-            return View();
+            return View(customer);
         }
 
         // GET: Customers/Create
@@ -48,7 +48,7 @@ namespace TravelGuide.Controllers
                 context.Customers.Add(customer);
                 context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Customers", customer);
             }
             catch
             {
@@ -71,6 +71,14 @@ namespace TravelGuide.Controllers
             {
                 // TODO: Add update logic here
                 Customer customer1 = context.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
+                customer1.FirstName = customer.FirstName;
+                customer1.LastName = customer.LastName;
+                customer1.StreetAddress = customer.StreetAddress;
+                customer1.PhoneNumber = customer.PhoneNumber;
+                customer1.Insterests = customer.Insterests;
+
+                context.SaveChanges();
+
 
                 return RedirectToAction("Index");
             }
@@ -83,16 +91,20 @@ namespace TravelGuide.Controllers
         // GET: Customers/Delete/5
         public ActionResult Delete(int id)
         {
+            Customer customer = context.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
             return View();
         }
 
         // POST: Customers/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Customer customer)
         {
             try
             {
                 // TODO: Add delete logic here
+                Customer customerToDelete = context.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
+                context.Customers.Remove(customerToDelete);
+                context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
