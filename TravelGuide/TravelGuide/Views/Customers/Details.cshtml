@@ -50,17 +50,11 @@
             @Html.DisplayFor(model => model.Insterests)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationId)
-        </dd>
-
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Itinerary", "Index")
+    @Html.ActionLink("Itinerary", "Create");
 </p>

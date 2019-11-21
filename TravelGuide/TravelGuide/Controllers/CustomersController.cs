@@ -80,7 +80,7 @@ namespace TravelGuide.Controllers
                 context.SaveChanges();
 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Customers", customer);
             }
             catch
             {
