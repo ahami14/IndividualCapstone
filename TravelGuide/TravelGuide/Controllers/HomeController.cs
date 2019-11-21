@@ -42,5 +42,11 @@ namespace TravelGuide.Controllers
 
             return View();
         }
+
+        public ActionResult Search()
+        {
+            ViewBag.Message = "Maps and Places API in Progress";
+            return View();
+        }
     }
 }

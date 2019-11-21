@@ -162,6 +162,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIkeys.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -187,6 +188,10 @@
     <Compile Include="Migrations\201911201728515_MigrationTwo.cs" />
     <Compile Include="Migrations\201911201728515_MigrationTwo.Designer.cs">
       <DependentUpon>201911201728515_MigrationTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911211617404_MigrationThree.cs" />
+    <Compile Include="Migrations\201911211617404_MigrationThree.Designer.cs">
+      <DependentUpon>201911211617404_MigrationThree.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -260,10 +265,15 @@
     <Content Include="Views\Itinerary\Create.cshtml" />
     <Content Include="Views\Itinerary\Index.cshtml" />
     <Content Include="Views\Itinerary\Edit.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
+    <Content Include="Views\Itinerary\Delete.cshtml" />
+    <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Items\Delete.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Items\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -287,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911201728515_MigrationTwo.resx">
       <DependentUpon>201911201728515_MigrationTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911211617404_MigrationThree.resx">
+      <DependentUpon>201911211617404_MigrationThree.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
