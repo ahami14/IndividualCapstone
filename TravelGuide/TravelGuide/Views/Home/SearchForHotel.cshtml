@@ -1,0 +1,38 @@
+﻿@model TravelGuide.Models.ItemInItinerary
+@{
+    ViewBag.Title = "SearchForHotel";
+}
+
+<h2>SearchForHotel</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>WishList</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationOfEvent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LocationOfEvent, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LocationOfEvent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p> @Html.ActionLink("Back To Details", "Index", "Home")</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,38 @@
+﻿@model TravelGuide.Models.Class1[]
+
+
+@{
+    ViewBag.Title = "SearchResults";
+}
+
+<h2>SearchResults</h2>
+
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => Model[0].city)
+        </td>
+        <th></th>
+    </tr>
+
+
+</table>
+@for (int i = 0; i < Model.Length; i++)
+{
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => Model[i].city)
+            </td>
+            <td>
+                |$
+            </td>
+            <td>
+            </td>s
+        </tr>
+    </table>
+
+}
+<br />
+<p>@Html.ActionLink("Back to details", "Index", "Home")</p>
+<p>@Html.ActionLink("Search for something different", "Search", "Wishlist")</p>
