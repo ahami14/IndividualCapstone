@@ -197,9 +197,14 @@
     <Compile Include="Migrations\201911251653119_HotelMigration.Designer.cs">
       <DependentUpon>201911251653119_HotelMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911302058467_SomeOtherMigration.cs" />
+    <Compile Include="Migrations\201911302058467_SomeOtherMigration.Designer.cs">
+      <DependentUpon>201911302058467_SomeOtherMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\EventSearch.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ItemInItinerary.cs" />
@@ -310,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911251653119_HotelMigration.resx">
       <DependentUpon>201911251653119_HotelMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911302058467_SomeOtherMigration.resx">
+      <DependentUpon>201911302058467_SomeOtherMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -53,31 +53,41 @@ namespace TravelGuide.Controllers
             return View();
         }
 
+        public ActionResult SearchResults()
+        {
+            return View();
+        }
 
-        public async Task<ActionResult> SearchForHotels(ItemInItinerary item)
+        public ActionResult SearchForHotel()
+        {
+            return View();
+        }
+
+
+        public async Task<ActionResult> Search(ItemInItinerary item)
         {
 
             string id = User.Identity.GetUserId();
             var user = context.Customers.Where(u => u.ApplicationId == id).FirstOrDefault();
-            string url = $"https://google-search1.p.rapidapi.com/google-search?keywords={item.LocationOfEvent}&hl=en&gl=us";
+            string url = $"https://www.eventbriteapi.com/v3/events/search?location.address";
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "140d239612msh901de9fc0c6b784p1f0effjsned3b86971ce8");
+            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "GIXJAFBFW3JE4F7VD4");
             HttpResponseMessage response = await client.GetAsync(url);
             string data = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                Class1[] hotels = JsonConvert.DeserializeObject<Class1[]>(data);
+                Class2[] events = JsonConvert.DeserializeObject<Class2[]>(data);
 
-                return View("Search", hotels);
+                return View("SearchResults", events);
             }
 
-                return View("Search", "Home");
+                return View("SearchResults", "Home");
         }
 
-        public ActionResult SearchResults(Class1[] hotels)
+        public ActionResult SearchResults(Class2[] events)
         {
-            return View(hotels);
+            return View(events);
         }
     }
 }

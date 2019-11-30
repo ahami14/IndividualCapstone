@@ -1,16 +1,16 @@
 ﻿@model TravelGuide.Models.ItemInItinerary
 @{
-    ViewBag.Title = "SearchForHotel";
+    ViewBag.Title = "SearchForEvent";
 }
 
-<h2>SearchForHotel</h2>
+<h2>SearchForEvent</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>WishList</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
