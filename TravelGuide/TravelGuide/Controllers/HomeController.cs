@@ -47,7 +47,7 @@ namespace TravelGuide.Controllers
             return View();
         }
 
-        public ActionResult Search()
+        public ActionResult SearchForPlaces()
         {
             ViewBag.Message = "Maps and Places API in Progress";
             return View();
