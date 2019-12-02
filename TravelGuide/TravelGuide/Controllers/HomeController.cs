@@ -29,7 +29,7 @@ namespace TravelGuide.Controllers
             {
                 string userId = User.Identity.GetUserId();
                 var user = context.Customers.Where(c => c.ApplicationId == userId).FirstOrDefault();
-                return RedirectToAction("Details", "Customers", user);
+                return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
             }
         }
 
@@ -58,7 +58,7 @@ namespace TravelGuide.Controllers
             return View();
         }
 
-        public ActionResult SearchForHotel()
+        public ActionResult SearchForEvent()
         {
             return View();
         }
@@ -69,7 +69,7 @@ namespace TravelGuide.Controllers
 
             string id = User.Identity.GetUserId();
             var user = context.Customers.Where(u => u.ApplicationId == id).FirstOrDefault();
-            string url = $"https://www.eventbriteapi.com/v3/events/search?location.address";
+            string url = $"https://www.eventbriteapi.com/v3/events/search?location.address&keywords={item.LocationOfEvent}";
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "GIXJAFBFW3JE4F7VD4");

@@ -25,6 +25,7 @@ namespace TravelGuide.Controllers
         // GET: Customers/Details/5
         public ActionResult Details(int id)
         {
+
             Customer customer = context.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
             return View(customer);
         }
@@ -48,7 +49,9 @@ namespace TravelGuide.Controllers
                 context.Customers.Add(customer);
                 context.SaveChanges();
 
-                return RedirectToAction("Details", "Customers", customer);
+                
+
+                return View("Details", customer);
             }
             catch
             {
