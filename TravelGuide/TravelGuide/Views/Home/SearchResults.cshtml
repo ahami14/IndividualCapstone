@@ -10,7 +10,7 @@
 <table class="table">
     <tr>
         <td>
-            @Html.DisplayNameFor(model => Model[0].city)
+            @Html.DisplayNameFor(model => Model[0].Location)
         </td>
         <th></th>
     </tr>
@@ -22,7 +22,7 @@
     <table>
         <tr>
             <td>
-                @Html.DisplayFor(model => Model[i].city)
+                @Html.DisplayFor(model => Model[i].Location)
             </td>
             <td>
                 |$
@@ -35,4 +35,4 @@
 }
 <br />
 <p>@Html.ActionLink("Back to details", "Index", "Home")</p>
-<p>@Html.ActionLink("Search for something different", "Search", "Wishlist")</p>
+<p>@Html.ActionLink("Search for something different", "SearchForEvent", "Home")</p>

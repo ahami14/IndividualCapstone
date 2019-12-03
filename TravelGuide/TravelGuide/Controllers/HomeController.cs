@@ -58,7 +58,7 @@ namespace TravelGuide.Controllers
             return View();
         }
 
-        public ActionResult SearchForEvent()
+        public ActionResult SearchForThings()
         {
             return View();
         }

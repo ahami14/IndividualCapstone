@@ -12,6 +12,7 @@ namespace TravelGuide.Models
 
     public class Class2
     {
+        public string Location { get; set; }
         public string event_id { get; set; }
     }
 }
