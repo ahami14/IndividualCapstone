@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace TravelGuide.Controllers
 
         public ActionResult SearchForPlaces()
         {
-            ViewBag.Message = "Maps and Places API in Progress";
+            ViewBag.Message = "Search for Places";
             return View();
         }
 
@@ -63,31 +64,46 @@ namespace TravelGuide.Controllers
             return View();
         }
 
-
-        public async Task<ActionResult> Search(ItemInItinerary item)
+        [HttpPost]
+        public ActionResult Search(/*ItemInItinerary item*/)
         {
 
             string id = User.Identity.GetUserId();
             var user = context.Customers.Where(u => u.ApplicationId == id).FirstOrDefault();
-            string url = $"https://www.eventbriteapi.com/v3/events/search?location.address&keywords={item.LocationOfEvent}";
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "GIXJAFBFW3JE4F7VD4");
-            HttpResponseMessage response = await client.GetAsync(url);
-            string data = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                Class2[] events = JsonConvert.DeserializeObject<Class2[]>(data);
+            string url = $"https://google-search1.p.rapidapi.com/google-search";
 
-                return View("SearchResults", events);
+            var client = new RestClient("https://google-search1.p.rapidapi.com/google-search?q=Avengers%252BEndgame&hl=en&gl=us");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-rapidapi-host", "google-search1.p.rapidapi.com");
+            request.AddHeader("x-rapidapi-key", "140d239612msh901de9fc0c6b784p1f0effjsned3b86971ce8");
+            IRestResponse response = client.Execute(request);
+
+
+            //HttpClient client = new HttpClient();
+            //client.BaseAddress = new Uri(url);
+            //client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "140d239612msh901de9fc0c6b784p1f0effjsned3b86971ce8");
+            //HttpResponseMessage response = await client.GetAsync(url
+
+            string data = response.Content.ToString();
+            //if (response.IsSuccessStatusCode)
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+
+            {
+                var test = JsonConvert.DeserializeObject(data);
+
+                return View("SearchResults", test);
             }
 
-                return View("SearchResults", "Home");
+            return View("SearchResults", "Home");
         }
 
-        public ActionResult SearchResults(Class2[] events)
-        {
-            return View(events);
-        }
+        //    public ActionResult SearchResults(Class2[] events)
+        //    {
+        //        return View(events);
+        //    }
+
+        //search input from user (form)
+        //API method is POST from the form and take in a string for the URL
+        //make google model, test to get data out
     }
 }
