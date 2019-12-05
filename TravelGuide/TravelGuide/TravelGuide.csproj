@@ -301,8 +301,8 @@
     <Content Include="Views\Items\Delete.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Home\SearchForPlaces.cshtml" />
-    <Content Include="Views\Home\SearchForThings.cshtml" />
     <Content Include="Views\Home\SearchResults.cshtml" />
+    <Content Include="Views\Home\SearchForThings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

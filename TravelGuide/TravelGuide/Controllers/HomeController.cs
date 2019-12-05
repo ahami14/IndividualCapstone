@@ -22,7 +22,7 @@ namespace TravelGuide.Controllers
         }
         public ActionResult Index()
         {
-            if(User.Identity.GetUserId() == null)
+            if (User.Identity.GetUserId() == null)
             {
                 return View();
             }
@@ -61,18 +61,21 @@ namespace TravelGuide.Controllers
 
         public ActionResult SearchForThings()
         {
+            Itinerary itinerary = new Itinerary();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Search(/*ItemInItinerary item*/)
+        public ActionResult SearchForThings(Itinerary itinerary)
         {
 
             string id = User.Identity.GetUserId();
             var user = context.Customers.Where(u => u.ApplicationId == id).FirstOrDefault();
-            string url = $"https://google-search1.p.rapidapi.com/google-search";
+            string url = $"https://google-search1.p.rapidapi.com/google-search?q={itinerary.ItineraryName}&hl=en&gl=us";
 
-            var client = new RestClient("https://google-search1.p.rapidapi.com/google-search?q=Avengers%252BEndgame&hl=en&gl=us");
+            var client = new RestClient(url);
+            // "https://google-search1.p.rapidapi.com/google-search?q=Avengers%252BEndgame&hl=en&gl=us"
+
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-host", "google-search1.p.rapidapi.com");
             request.AddHeader("x-rapidapi-key", "140d239612msh901de9fc0c6b784p1f0effjsned3b86971ce8");
@@ -87,11 +90,16 @@ namespace TravelGuide.Controllers
             string data = response.Content.ToString();
             //if (response.IsSuccessStatusCode)
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
-
             {
-                var test = JsonConvert.DeserializeObject(data);
+                Class1[] searchedItem = JsonConvert.DeserializeObject<Class1[]>(data);
 
-                return View("SearchResults", test);
+                //var jsonResults = JsonConvert.DeserializeObject(data);
+                //Class1 c1 = new Class1();
+
+                // how to access data in json
+                //c1.title = jsonResult.organic[0].title;
+
+                return View("SearchResults", searchedItem);
             }
 
             return View("SearchResults", "Home");
