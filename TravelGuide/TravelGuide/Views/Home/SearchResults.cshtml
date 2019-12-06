@@ -22,32 +22,56 @@
 
 
 </table>
-@for (int i = 0; i < Model.currentPage; i++)
+
+<td>
+    @Html.DisplayFor(model => model.totalResults)
+</td>
+<td>
+    @Html.DisplayFor(model => model.keyword)
+</td>
+
+@for (int i = 0; i < Model.organic.Length; i++)
 {
     <table>
         <tr>
+            
             <td>
-                @Html.DisplayFor(model => model.keyword)
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.organic)
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.totalResults)
-            </td>
-            <td>
-                
+                @*<a href="@Mod"></a>*@
+                 @Model.organic[i].url
+                @*@Html.DisplayFor(model => model.organic)*@
             </td>
         </tr>
     </table>
 
 }
+
+
+@*@for (int i = 0; i < Model.currentPage; i++)
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.keyword)
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.organic)
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.totalResults)
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+
+    }*@
 <br />
 
 <p>@Html.ActionLink("Search for Something Else", "SearchForThings", "Home")</p>
