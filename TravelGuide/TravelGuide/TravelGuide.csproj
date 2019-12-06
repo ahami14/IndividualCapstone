@@ -222,6 +222,14 @@
     <Compile Include="Migrations\201912051806476_NewGoogMigration.Designer.cs">
       <DependentUpon>201912051806476_NewGoogMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912060000537_NewGoogMigration1.cs" />
+    <Compile Include="Migrations\201912060000537_NewGoogMigration1.Designer.cs">
+      <DependentUpon>201912060000537_NewGoogMigration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912060002006_SomeNewGoog.cs" />
+    <Compile Include="Migrations\201912060002006_SomeNewGoog.Designer.cs">
+      <DependentUpon>201912060002006_SomeNewGoog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -301,8 +309,8 @@
     <Content Include="Views\Items\Delete.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Home\SearchForPlaces.cshtml" />
-    <Content Include="Views\Home\SearchResults.cshtml" />
     <Content Include="Views\Home\SearchForThings.cshtml" />
+    <Content Include="Views\Home\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912051806476_NewGoogMigration.resx">
       <DependentUpon>201912051806476_NewGoogMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912060000537_NewGoogMigration1.resx">
+      <DependentUpon>201912060000537_NewGoogMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912060002006_SomeNewGoog.resx">
+      <DependentUpon>201912060002006_SomeNewGoog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TravelGuide.Models.Class1>
+﻿@model TravelGuide.Models.SearchItem
 
 @{
     ViewBag.Title = "SearchResults";
@@ -6,46 +6,48 @@
 
 <h2>SearchResults</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
+        <td>
             @Html.DisplayNameFor(model => model.keyword)
-        </th>
-        <th>
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.organic)
+        </td>
+        <td>
             @Html.DisplayNameFor(model => model.totalResults)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
+        </td>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.keyword)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.totalResults)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            
-        </td>
-    </tr>
-}
 
 </table>
+@for (int i = 0; i < Model.currentPage; i++)
+{
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.keyword)
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.organic)
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.totalResults)
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
 
-<p>@Html.ActionLink("Search For Something Else", "SearchForThings", "Home")</p>
+}
+<br />
+<p>@Html.ActionLink("Back to details", "Index", "Home")</p>
+<p>@Html.ActionLink("Search for Something Else", "SearchForThings", "Home")</p>
